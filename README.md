@@ -30,18 +30,18 @@ junit is used to build unit test cases.
 
 1. Open a browser and enter http://localhost:8080/robot-service/steer
 
-![FormPage](snapshots/FormPage.JPG "FormPage") 
+![FormPage](Snapshots/FormPage.JPG "FormPage") 
 
 2. Enter the details and click on submit.
 
-![EnterDetails](snapshots/EnterDetails.JPG "EnterDetails")
+![EnterDetails](Snapshots/EnterDetails.JPG "EnterDetails")
 
 3. View report on Robot's movements.
 
-![Report](snapshots/Report.JPG "Report")
+![Report](Snapshots/Report.JPG "Report")
 
 4. You can also invoke rest endpoint to get report in Json format.
 
-![RestService](snapshots/RestService.JPG "RestService")
+![RestService](Snapshots/RestService.JPG "RestService")
 
 

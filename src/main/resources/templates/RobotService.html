@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Robot Steering Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<form class="form-horizontal" th:fragment="robotServiceForm" method="post" th:object="${userInputs}" th:attr="action=@{~/robot-service/steer}">
+    <fieldset>
+        Matrix size:    <input type="text" name="matrixSize" th:value="${matrixSize}" required="required"/>
+        <p style="color:red" th:if="${#fields.hasErrors('matrixSize')}" th:errors="*{matrixSize}">Invalid Input</p>
+        <br/>
+        First position: <input type="text" name="firstPosition" th:value="${firstPosition}" required="required"/>
+        <p style="color:red" th:if="${#fields.hasErrors('firstPosition')}" th:errors="*{firstPosition}">Invalid Input</p>
+        <br/>
+        Walk:           <input type="text" name="walk" th:field="*{walk}" th:value="${walk}" required="required"/>
+        <p style="color:red" th:if="${#fields.hasErrors('walk')}" th:errors="*{walk}">Invalid Input</p>
+        <br/>
+
+    </fieldset>
+    <input type="submit" value="Submit" th:unless="${movements} or ${#fields.hasAnyErrors()}"/>
+    <a th:if="${#fields.hasAnyErrors()}" th:href="@{/robot-service}">Go Back</a>
+
+</form>
+<br/>
+<hr />
+
+<p th:if="${movements}"><b>Report</b></p>
+
+<div>
+<table th:if="${movements}" border="1" style="width:300px">
+    <tr>
+        <th>COMMAND</th>
+        <th>CURRENT_COLUMN</th>
+        <th>CURRENT_ROW</th>
+        <th>DIRECTION</th>
+    </tr>
+    <tr th:each="movement : ${movements}">
+        <td  th:text="${movement.command}">Start</td>
+        <td th:text="${movement.column}">0</td>
+        <td  th:text="${movement.row}">0</td>
+        <td th:text="${movement.direction}">N</td>
+    </tr>
+</table>
+</div>
+<a th:if="${movements}" th:href="@{/robot-service}">Go Back</a>
+</body>
+</html>
